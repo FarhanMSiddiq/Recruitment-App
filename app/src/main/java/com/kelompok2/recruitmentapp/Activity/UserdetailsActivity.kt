@@ -40,6 +40,7 @@ class UserdetailsActivity : AppCompatActivity() {
                     full_name.setText(user!!.getFullname())
 
 
+
                 }
             }
 

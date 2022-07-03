@@ -18,6 +18,7 @@ class Job
     private var time: String = ""
 
 
+
     constructor()
 
     constructor(jobtitle: String,jobdescription: String,responsibilities: String,skills: String,

@@ -469,6 +469,18 @@
                 android:textSize="14sp">
 
             </TextView>
+            <TextView
+                android:id="@+id/appl_io_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/appl_io_one"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="10dp"
+                android:text="klik to send mail"
+                android:textColor="@color/darkdarkblue"
+                android:textSize="16sp">
+
+            </TextView>
 
 
 

@@ -1,6 +1,8 @@
 package com.kelompok2.recruitmentapp
 
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,7 +16,17 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.application_item_layout.*
+import kotlinx.android.synthetic.main.application_item_layout.view.*
 import kotlinx.android.synthetic.main.job_layout.view.*
+import kotlinx.android.synthetic.main.job_layout.view.appl_io_one
+import kotlinx.android.synthetic.main.job_layout.view.title_app_text
+import kotlinx.android.synthetic.main.job_layout.view.title_app_text_one
+import kotlinx.android.synthetic.main.job_layout.view.title_app_text_two
+import android.widget.Toast
+import kotlinx.android.synthetic.main.application_item_layout.appl_io
+import kotlinx.android.synthetic.main.job_layout.*
+
 
 class JobdetailFragment : Fragment() {
     private lateinit var profileId:String
@@ -96,8 +108,21 @@ class JobdetailFragment : Fragment() {
                                 view?.title_app_text_two?.text = job!!.getJoblocation()
                                 view?.appl_io_one?.text = job!!.getDeadline()
                                 view?.money?.text = job!!.getSalary()
+                                val jobTitle = job!!.getJobtitle()
+                                val company = job!!.getCompanyname()
 
 
+
+                                appl_io_send.setOnClickListener {
+                                    val i = Intent(Intent.ACTION_SEND)
+                                    i.type = "message/rfc822"
+                                    i.putExtra(Intent.EXTRA_EMAIL, arrayOf(job!!.getDeadline()))
+                                    i.putExtra(Intent.EXTRA_SUBJECT, "Lamar Pekerjaan $jobTitle $company")
+
+                                        startActivity(Intent.createChooser(i, "Send mail..."))
+
+
+                                    }
 
 
 
